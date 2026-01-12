@@ -1,5 +1,5 @@
 public enum RhythmType {
-    DOT(2),
+    DOT(1.5),
     WHOLE_NOTE(4.0),
     HALF_NOTE(2.0),
     EIGHTH_NOTE_FIVELET(2.0/5.0),
