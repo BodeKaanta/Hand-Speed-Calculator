@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pages/hand_speed_calculator_page.dart';
 
 void main() {
   runApp(const HandSpeedCalculator ());
@@ -10,15 +11,7 @@ class HandSpeedCalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar:  AppBar(
-          backgroundColor: Colors.lightBlueAccent,
-          title: const Text('Hand Speed Calculator')
-        ),
-        body: Center(
-          child: Text('BPM goes here')
-        ),
-      )
+      home: HandSpeedCalculatorPage(),
     );
   }
 }
