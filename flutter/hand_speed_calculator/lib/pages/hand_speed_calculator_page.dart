@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/bpm_input.dart';
 import '../logic/calculator.dart';
 import '../logic/rhythm_type.dart';
 
@@ -23,7 +24,7 @@ class _HandSpeedCalculatorPageState
 
     void _calculate() {
       setState(() {
-        _resultBpm = _calculator.calculateHandSpeed(actualRhythm, desiredRhythm, _initalBpm);
+        _resultBpm = _calculator.calculateHandSpeed(desiredRhythm, actualRhythm , _initalBpm);
       });
     }
     @override
@@ -33,9 +34,20 @@ class _HandSpeedCalculatorPageState
           title: const Text('Hand Speed Calculator'),
           backgroundColor: Colors.lightBlueAccent,
         ),
-        body: const Center(
-          child:  Text('UI next'),
-        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              BpmInput(bpm: _initalBpm,
+              onChanged: (value) {
+                setState(() {
+                  _initalBpm = value;
+                });
+              }
+              )
+            ]
+          ),
+        )
       );
     }
   }
