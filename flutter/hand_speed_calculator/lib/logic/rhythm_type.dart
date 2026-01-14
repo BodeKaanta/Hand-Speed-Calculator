@@ -20,6 +20,5 @@ enum RhythmType {
 
   const RhythmType(this._duration);
 
-  double get getDuration => _duration;
+  double get duration => _duration;
 }
-
