@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hand_speed_calculator/widgets/result_display.dart';
 import 'package:hand_speed_calculator/widgets/rhythm_dropdown.dart';
 import '../widgets/bpm_input.dart';
 import '../logic/calculator.dart';
@@ -23,7 +24,7 @@ class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
 
     void _calculate() {
       setState(() {
-        _resultBpm = _calculator.calculateHandSpeed(_desiredRhythm, _actualRhythm , _initalBpm);
+        _resultBpm = _calculator.calculateHandSpeed(_actualRhythm, _desiredRhythm, _initalBpm);
       });
     }
     @override
@@ -63,7 +64,17 @@ class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
                 setState(() {
                   _desiredRhythm = rhythm;
                 });
-              })
+              }),
+
+              const SizedBox(height: 32),
+
+              ElevatedButton(onPressed: _calculate,
+              child: const Text('Calculate'),
+              ),
+
+              const SizedBox(height: 32),
+
+              ResultDisplay(resultBpm: _resultBpm),
             ],
           ),
         )
