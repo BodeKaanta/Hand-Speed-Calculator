@@ -6,7 +6,14 @@ import '../logic/calculator.dart';
 import '../logic/rhythm_type.dart';
 
 class HandSpeedCalculatorPage extends StatefulWidget {
-  const HandSpeedCalculatorPage({Key? key}) : super(key: key);
+  const HandSpeedCalculatorPage({
+    Key? key,
+    required this.isDarkMode,
+    required this.onThemeChanged,
+   }) : super(key: key);
+
+  final bool isDarkMode;
+  final Function(bool) onThemeChanged;
 
   @override
   State<HandSpeedCalculatorPage> createState() =>
@@ -33,6 +40,20 @@ class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
         appBar: AppBar(
           title: const Text('Hand Speed Calculator'),
           backgroundColor: Colors.lightBlueAccent,
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              const DrawerHeader(
+                child: Text('Settings'),
+                ),
+                SwitchListTile(
+                  title: const Text('Dark Mode'),
+                  value: widget.isDarkMode,
+                  onChanged: widget.onThemeChanged,
+                  ),
+            ],
+          )
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
