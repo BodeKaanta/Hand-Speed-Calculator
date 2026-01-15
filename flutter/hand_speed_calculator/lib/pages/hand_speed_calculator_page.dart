@@ -12,9 +12,7 @@ class HandSpeedCalculatorPage extends StatefulWidget {
   
 }
 
-class _HandSpeedCalculatorPageState
-  extends State<HandSpeedCalculatorPage> {
-
+class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
     double _initalBpm = 120.0;
     RhythmType actualRhythm = RhythmType.QUARTER_NOTE;
     RhythmType desiredRhythm = RhythmType.SIXTEENTH_NOTE;
@@ -37,15 +35,15 @@ class _HandSpeedCalculatorPageState
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: .start,
             children: [
-              BpmInput(bpm: _initalBpm,
+              BpmInput(bpm: _initalBpm, 
               onChanged: (value) {
                 setState(() {
                   _initalBpm = value;
                 });
-              }
-              )
-            ]
+              })
+            ],
           ),
         )
       );
