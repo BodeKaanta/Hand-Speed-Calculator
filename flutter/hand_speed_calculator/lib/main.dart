@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/hand_speed_calculator_page.dart';
 
-void main() {
-  runApp(const HandSpeedCalculator ());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final prefs = await SharedPreferences.getInstance();
+  final isDark = prefs.getBool('darkMode') ?? false;
+
+  runApp(HandSpeedCalculator(isDarkMode: isDark));
 }
 
 class HandSpeedCalculator extends StatefulWidget {
-  const HandSpeedCalculator({super.key});
+  final bool isDarkMode;
+  
+  const HandSpeedCalculator({super.key, required this.isDarkMode});
 
   @override
   State<HandSpeedCalculator> createState() =>
@@ -14,15 +22,22 @@ class HandSpeedCalculator extends StatefulWidget {
 }
 
 class _HandSpeedCalculatorState extends State<HandSpeedCalculator> {
-  ThemeMode _themeMode = ThemeMode.light;
+  late ThemeMode _themeMode;
 
-
-  void _toggleTheme(bool isDark) {
-    setState(() {
-      _themeMode = isDark ? ThemeMode.dark: ThemeMode.light;
-    });
+  @override
+  void initState(){
+    super.initState();
+    _themeMode = widget.isDarkMode ? ThemeMode.dark : ThemeMode.light;
   }
 
+  Future<void> _toggleTheme(bool isDark) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('darkMode', isDark);
+
+    setState(() {
+      _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +47,8 @@ class _HandSpeedCalculatorState extends State<HandSpeedCalculator> {
       darkTheme: ThemeData.dark(),
       themeMode: _themeMode,
       home: HandSpeedCalculatorPage(
-        onThemeChanged: _toggleTheme,
         isDarkMode: _themeMode == ThemeMode.dark,
+        onThemeChanged: _toggleTheme,
       ),
     );
   }
