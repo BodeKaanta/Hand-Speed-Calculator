@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hand_speed_calculator/widgets/rhythm_dropdown.dart';
 import '../widgets/bpm_input.dart';
 import '../logic/calculator.dart';
 import '../logic/rhythm_type.dart';
@@ -14,15 +15,15 @@ class HandSpeedCalculatorPage extends StatefulWidget {
 
 class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
     double _initalBpm = 120.0;
-    RhythmType actualRhythm = RhythmType.QUARTER_NOTE;
-    RhythmType desiredRhythm = RhythmType.SIXTEENTH_NOTE;
+    RhythmType _actualRhythm = RhythmType.QUARTER_NOTE;
+    RhythmType _desiredRhythm = RhythmType.SIXTEENTH_NOTE;
     double? _resultBpm;
 
     final Calculator _calculator = Calculator();
 
     void _calculate() {
       setState(() {
-        _resultBpm = _calculator.calculateHandSpeed(desiredRhythm, actualRhythm , _initalBpm);
+        _resultBpm = _calculator.calculateHandSpeed(_desiredRhythm, _actualRhythm , _initalBpm);
       });
     }
     @override
@@ -41,6 +42,26 @@ class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
               onChanged: (value) {
                 setState(() {
                   _initalBpm = value;
+                });
+              }),
+              const SizedBox(height: 24),
+
+              RhythmDropdown(
+                label: 'Starting Rhythm',
+                value: _actualRhythm,
+                onChanged: (rhythm) {
+                  setState(() {
+                    _actualRhythm = rhythm;
+                  });
+                }
+              ),
+              const SizedBox(height: 24),
+
+              RhythmDropdown(label: 'Target Rhythm',
+              value: _desiredRhythm,
+              onChanged: (rhythm){
+                setState(() {
+                  _desiredRhythm = rhythm;
                 });
               })
             ],
