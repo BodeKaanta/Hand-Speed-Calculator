@@ -8,7 +8,7 @@ A cross-platform Flutter app for drummers and percussionists that converts a tem
 Musicians often build speed on one subdivision and then want to practice another at the same physical speed. Working that out in your head means doing fraction math with tuplets. This app does the math for you.
 
 <p align="center">
-  <img src="docs/screenshots/light_mode.png" alt="Light mode: sixteenth-note fivelets at 172 BPM convert to sixteenth notes at 215 BPM" width="300">
+  <img src="docs/screenshots/light_mode.png" alt="Light mode: sixteenth-note fivelets at 176 BPM convert to sixteenth notes at 220 BPM" width="300">
   &nbsp;&nbsp;
   <img src="docs/screenshots/dark_mode.png" alt="Dark mode: quarter-note triplets at 136 BPM convert to quarter notes at 204 BPM" width="300">
 </p>
