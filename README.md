@@ -2,13 +2,13 @@
 
 A cross-platform Flutter app for drummers and percussionists that converts a tempo between rhythmic subdivisions while keeping the **same hand speed** (notes per second).
 
-> *I can play sixteenth-note quintuplets at 172 BPM. What metronome setting gives me that same speed with straight sixteenths?*
-> **Answer: 215 BPM.**
+> *I can play sixteenth-note quintuplets at 176 BPM. What metronome setting gives me that same speed with straight sixteenths?*
+> **Answer: 220 BPM.**
 
 Musicians often build speed on one subdivision and then want to practice another at the same physical speed. Working that out in your head means doing fraction math with tuplets. This app does the math for you.
 
 <p align="center">
-  <img src="docs/screenshots/light_mode.png" alt="Light mode: sixteenth-note fivelets at 172 BPM convert to sixteenth notes at 215 BPM" width="300">
+  <img src="docs/screenshots/light_mode.png" alt="Light mode: sixteenth-note fivelets at 176 BPM convert to sixteenth notes at 220 BPM" width="300">
   &nbsp;&nbsp;
   <img src="docs/screenshots/dark_mode.png" alt="Dark mode: quarter-note triplets at 136 BPM convert to quarter notes at 204 BPM" width="300">
 </p>
@@ -28,7 +28,7 @@ Each rhythm is stored as its length in quarter-note beats. A sixteenth note is `
 target BPM = starting BPM × (target note length / starting note length)
 ```
 
-For the example above: `172 × (1/4 ÷ 1/5) = 215 BPM`.
+For the example above: `176 × (1/4 ÷ 1/5) = 220 BPM`.
 
 ## Tech Stack
 
