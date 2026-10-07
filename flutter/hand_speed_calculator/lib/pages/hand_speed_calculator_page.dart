@@ -22,7 +22,7 @@ class HandSpeedCalculatorPage extends StatefulWidget {
 }
 
 class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
-    double _initalBpm = 120.0;
+    double _initialBpm = 120.0;
     RhythmType _actualRhythm = RhythmType.QUARTER_NOTE;
     RhythmType _desiredRhythm = RhythmType.SIXTEENTH_NOTE;
     double? _resultBpm;
@@ -31,7 +31,7 @@ class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
 
     void _calculate() {
       setState(() {
-        _resultBpm = _calculator.calculateHandSpeed(_actualRhythm, _desiredRhythm, _initalBpm);
+        _resultBpm = _calculator.calculateHandSpeed(_actualRhythm, _desiredRhythm, _initialBpm);
       });
     }
     @override
@@ -60,10 +60,10 @@ class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
           child: Column(
             crossAxisAlignment: .start,
             children: [
-              BpmInput(bpm: _initalBpm, 
+              BpmInput(bpm: _initialBpm, 
               onChanged: (value) {
                 setState(() {
-                  _initalBpm = value;
+                  _initialBpm = value;
                 });
               }),
               const SizedBox(height: 24),
