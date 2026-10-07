@@ -29,7 +29,7 @@ void main() {
         test('Sixlets at 240 to triplets', () {
       final result = calculator.calculateHandSpeed(
         RhythmType.SIXLET,
-        RhythmType.EIHTH_NOTE_TRIPLET,
+        RhythmType.EIGHTH_NOTE_TRIPLET,
         240,
       );
 

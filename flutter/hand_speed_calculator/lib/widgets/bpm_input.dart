@@ -16,7 +16,7 @@ class BpmInput extends StatelessWidget{
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Inital BPM',
+          'Initial BPM',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
