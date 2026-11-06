@@ -1,10 +1,16 @@
 import 'package:hand_speed_calculator/logic/rhythm_type.dart';
 
 class Calculator {
-  double calculateHandSpeed(RhythmType desiredRhythmParameter, RhythmType actualRhythmParameter, double initialBpm){
+  double calculateHandSpeed(
+    RhythmType desiredRhythmParameter,
+    RhythmType actualRhythmParameter,
+    double initialBpm, {
+    bool desiredDotted = false,
+    bool actualDotted = false,
+  }) {
     final double newBPM;
-    double desiredRhythm = desiredRhythmParameter.duration;
-    double actualRhythm = actualRhythmParameter.duration;
+    double desiredRhythm = desiredRhythmParameter.durationWithDot(desiredDotted);
+    double actualRhythm = actualRhythmParameter.durationWithDot(actualDotted);
 
     if (initialBpm <= 0) {
       throw ArgumentError("Invalid BPM, choose a larger bpm");

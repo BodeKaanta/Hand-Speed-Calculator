@@ -25,13 +25,21 @@ class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
     double _initialBpm = 120.0;
     RhythmType _actualRhythm = RhythmType.QUARTER_NOTE;
     RhythmType _desiredRhythm = RhythmType.SIXTEENTH_NOTE;
+    bool _actualDotted = false;
+    bool _desiredDotted = false;
     double? _resultBpm;
 
     final Calculator _calculator = Calculator();
 
     void _calculate() {
       setState(() {
-        _resultBpm = _calculator.calculateHandSpeed(_actualRhythm, _desiredRhythm, _initialBpm);
+        _resultBpm = _calculator.calculateHandSpeed(
+          _actualRhythm,
+          _desiredRhythm,
+          _initialBpm,
+          desiredDotted: _actualDotted,
+          actualDotted: _desiredDotted,
+        );
       });
     }
     @override
@@ -75,7 +83,13 @@ class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
                   setState(() {
                     _actualRhythm = rhythm;
                   });
-                }
+                },
+                isDotted: _actualDotted,
+                onDottedChanged: (dotted) {
+                  setState(() {
+                    _actualDotted = dotted;
+                  });
+                },
               ),
               const SizedBox(height: 24),
 
@@ -84,6 +98,12 @@ class _HandSpeedCalculatorPageState extends State<HandSpeedCalculatorPage> {
               onChanged: (rhythm){
                 setState(() {
                   _desiredRhythm = rhythm;
+                });
+              },
+              isDotted: _desiredDotted,
+              onDottedChanged: (dotted) {
+                setState(() {
+                  _desiredDotted = dotted;
                 });
               }),
 

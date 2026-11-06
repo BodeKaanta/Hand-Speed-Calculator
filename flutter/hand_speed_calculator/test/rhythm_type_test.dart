@@ -22,5 +22,18 @@ void main() {
     test('Triplet duration is correct', () {
       expect(RhythmType.QUARTER_NOTE_TRIPLET.duration, closeTo(2.0 / 3.0, 0.0001));
     });
+
+    test('Dotted quarter note equals three eighth notes', () {
+      expect(RhythmType.QUARTER_NOTE.durationWithDot(true),
+          RhythmType.EIGHTH_NOTE.duration * 3);
+    });
+
+    test('Undotted duration is unchanged', () {
+      expect(RhythmType.HALF_NOTE.durationWithDot(false), 2.0);
+    });
+
+    test('Dotted half note is 3.0', () {
+      expect(RhythmType.HALF_NOTE.durationWithDot(true), 3.0);
+    });
   });
 }

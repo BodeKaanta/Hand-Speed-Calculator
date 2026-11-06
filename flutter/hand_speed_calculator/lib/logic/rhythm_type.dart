@@ -1,5 +1,4 @@
 enum RhythmType {
-  //DOT(1.5),
   WHOLE_NOTE(4.0),
   HALF_NOTE(2.0),
   EIGHTH_NOTE_FIVELET(2.0/5.0),
@@ -21,4 +20,12 @@ enum RhythmType {
   const RhythmType(this._duration);
 
   double get duration => _duration;
+
+  /// Multiplier applied to a dotted rhythm: a dot adds half of the
+  /// original value (e.g. a dotted quarter note = 3 eighth notes).
+  static const double dotMultiplier = 1.5;
+
+  /// The duration of this rhythm, optionally dotted.
+  double durationWithDot(bool dotted) =>
+      dotted ? _duration * dotMultiplier : _duration;
 }
