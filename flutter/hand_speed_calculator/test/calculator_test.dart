@@ -56,5 +56,28 @@ void main() {
         throwsArgumentError,
       );
     });
+
+    test('Dotting the quarter note in the eighth-to-quarter conversion multiplies the result by 1.5', () {
+      final result = calculator.calculateHandSpeed(
+        RhythmType.EIGHTH_NOTE,
+        RhythmType.QUARTER_NOTE,
+        120,
+        actualDotted: true,
+      );
+
+      expect(result, 360);
+    });
+
+    test('Dotting both rhythms leaves the ratio unchanged', () {
+      final result = calculator.calculateHandSpeed(
+        RhythmType.EIGHTH_NOTE,
+        RhythmType.QUARTER_NOTE,
+        120,
+        desiredDotted: true,
+        actualDotted: true,
+      );
+
+      expect(result, 240);
+    });
   });
 }
